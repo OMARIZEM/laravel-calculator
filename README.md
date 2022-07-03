@@ -1,64 +1,111 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Laravel Calculator (Technical Test)
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+### Test requirements
 
-## About Laravel
+create a simple calculator that can handle the following calculation types: plus, minus, multiplication, division.
+Your code should at least include a route to access the calculator page (e.g. /calculator), a controller to render the template and a very basic template for the form.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Project Key Metrics
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- Laravel v9.0
+- Frontend: Vue js 3
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Important Files / Folders
 
-## Learning Laravel
+[app/Services/Calculator ⇨ ](https://github.com/OMARIZEM/laravel-calculator/tree/main/app/Services/Calculator)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+[app/Factories ⇨ ](https://github.com/OMARIZEM/laravel-calculator/tree/main/app/Factories)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+[app/Http/Controllers/CalculatorController.php ⇨ ](https://github.com/OMARIZEM/laravel-calculator/blob/main/app/Http/Controllers/CalculatorController.php)
 
-## Laravel Sponsors
+[tests/Unit ⇨ ](https://github.com/OMARIZEM/laravel-calculator/tree/main/tests/Unit)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+[tests/Feature ⇨ ](https://github.com/OMARIZEM/laravel-calculator/tree/main/tests/Feature)
 
-### Premium Partners
+## Frontend Screenshot
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+![Frontend Screenshot](public/images/frontend.PNG)
 
-## Contributing
+## Api specifications
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Endpoint: `https://domain.com/api/calculator`
 
-## Code of Conduct
+Method: `POST`
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Parameters
 
-## Security Vulnerabilities
+| Param Name   | Param Type | Description                    | Required |
+| ------------ | ---------- | ------------------------------ | -------- |
+| `expression` | string     | Arithmetic expression like 2+6 | yes      |
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Response
 
-## License
+[200] OK
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```json
+{
+  "success": true,
+  "data": {
+        "expression": "-2+8",
+        "result": 6
+    },
+}
+```
+
+[422] Validation Error 
+
+```json
+{
+    "success": false,
+    "message": "expression should be a valid arithmetic expression",
+    "errors": {
+        "expression": [
+            "expression should be a valid arithmetic expression"
+        ]
+    }
+}
+```
+
+[500] Error 
+
+```json
+{
+    "success": false,
+    "message": "An internal Error occured.",
+    "errors": []
+}
+```
+
+## Setup Project
+
+```bash
+# clone the repo
+git clone https://github.com/OMARIZEM/laravel-calculator.git
+
+cd laravel-calculator
+
+# install composer dependencies
+composer install
+
+# install npm dependencies
+npm install
+
+# create a environment file
+cp .env.example .env
+
+# open .env file and change the APP_URL
+MIX_APP_URL=YOUR_URL_HERE
+
+# set the Application key
+php artisan key:generate
+
+# run the artisan server
+php artisan server
+
+# build the app
+npm run dev or npm run watch
+```
+
+## Contact info
+
+if you have any questions feel free to contact me here: [contact@izem.dev ](mailto:contact@izem.dev)

@@ -20,7 +20,7 @@ class Controller extends BaseController
         ])->setStatusCode($code);
     }
 
-    protected function respondWithError(string $message = "An External Error occured.", array $errors = [], int $code = 500): JsonResponse
+    protected function respondWithError(string $message = "An internal Error occured.", array $errors = [], int $code = 500): JsonResponse
     {
         return response()->json([
             "success" => false,
