@@ -106,6 +106,16 @@ php artisan server
 npm run dev or npm run watch
 ```
 
+
+## Tests
+
+```bash
+# To run tests use
+php artisan test
+```
+![Tests Screenshot](public/images/tests.PNG)
+
+
 ## Contact info
 
 if you have any questions feel free to contact me here: [contact@izem.dev ](mailto:contact@izem.dev)
